@@ -185,14 +185,14 @@ const PORTFOLIO_DATA = {
     {
       degree: "B.Tech in Computer Science & Engineering",
       institution: "Narula Institute of Technology (NiT)",
-      period: "Sep 2025 – Jul 2029",
+      period: "2025 – 2029",
       location: "Kolkata, West Bengal, India",
       details: "Computer Science and Information Sciences. Activities & Societies: Cricket, Football, Music. Focus on Research Skills & Teamwork."
     },
     {
       degree: "Higher Secondary (WBCHSE) & Secondary (WBSE)",
       institution: "Krishnapur Adarsha Vidyamandir",
-      period: "2023 – 2025",
+      period: "2017 – 2025",
       location: "Kolkata, West Bengal, India",
       details: "Pure Science (PCMCs). Grades: Madhyamik (10th) - 89% & Higher Secondary (12th) - 85.4%."
     }

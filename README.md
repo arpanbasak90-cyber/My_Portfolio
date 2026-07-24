@@ -55,8 +55,8 @@ A modern, highly aesthetic, fully responsive, and **data-decoupled** personal po
 
 | Institution | Degree / Program | Period | Grades / Highlights |
 | :--- | :--- | :---: | :--- |
-| **Narula Institute of Technology (NiT)** | B.Tech in Computer Science & Engineering | Sep 2025 – Jul 2029 | Focus on CS, Information Sciences, Research Skills, Teamwork. Cricket, Football, Music. |
-| **Krishnapur Adarsha Vidyamandir** | Higher Secondary (12th) & Secondary (10th) | 2023 – 2025 | Pure Science (PCMCs). **10th (Madhyamik): 89%** • **12th (HS): 85.4%** |
+| **Narula Institute of Technology (NiT)** | B.Tech in Computer Science & Engineering | 2025 – 2029 | Focus on CS, Information Sciences, Research Skills, Teamwork. Cricket, Football, Music. |
+| **Krishnapur Adarsha Vidyamandir** | Higher Secondary (12th) & Secondary (10th) | 2017 – 2025 | Pure Science (PCMCs). **10th (Madhyamik): 89%** • **12th (HS): 85.4%** |
 
 ---
 
