@@ -2,8 +2,6 @@
 
 <div align="center">
 
-![Arpan Basak Portfolio Preview](assets/profile.jpg)
-
 ### **"SHIP FAST, BREAK LIMITS"**
 
 **BTech CSE (Core) [2025–29] • 2X Hackathon Winner • 4X Hackathon Finalist • Generative AI & Web3 Builder**
@@ -58,11 +56,11 @@ A modern, highly aesthetic, fully responsive, and **data-decoupled** personal po
 | Project Name | Description | Tech Used | Repository & Live Links |
 | :--- | :--- | :--- | :--- |
 | **BuilderLeaderboard Platform** | Real-time hackathon leaderboard tracking developer shipping velocity and project rankings. | `React` `TypeScript` `TailwindCSS` `Vercel` | [GitHub](https://github.com/arpanbasak90-cyber/BuilderLeaderboard-Platform) • [Live Demo](https://builder-leaderboard-platform.vercel.app) |
-| **NFT Minting Platform** | Soroban smart contract decentralized NFT minting infrastructure on Stellar. | `JavaScript` `Stellar` `Soroban` `Smart Contracts` | [GitHub](https://github.com/arpanbasak90-cyber/NFT-Minting-Platform) |
+| **NFT Minting Platform** | Soroban smart contract decentralized NFT minting infrastructure on Stellar. | `JavaScript` `Stellar` `Soroban` `Smart Contracts` | [GitHub](https://github.com/arpanbasak90-cyber/NFT-Minting-Platform) • [Live Demo](https://nft-minting-platform-2.vercel.app) |
 | **Kavanch Security Platform** | Web3 security utility for contract validation, threat detection, and developer monitoring. | `JavaScript` `Web3` `Node.js` `Security` | [GitHub](https://github.com/arpanbasak90-cyber/Kavanch) |
 | **MediScan Doctor Hub** | AI-driven medical diagnostic assistance and healthcare provider portal. | `TypeScript` `React` `AI/ML` `HealthTech` | [GitHub](https://github.com/arpanbasak90-cyber/mediscan-doctor-hub) |
-| **Odoo Adamas Hackathon Project** | Enterprise workflow automation module for Odoo x Adamas University Hackathon 2026. | `JavaScript` `Python` `Odoo` `Hackathon` | [GitHub](https://github.com/arpanbasak90-cyber/odoo-adamas-hackathon-2026-) |
-| **KREDZ Protocol** | On-chain credit scoring and verifiable credential verification protocol. | `Web3` `Smart Contracts` `JavaScript` | [GitHub](https://github.com/arpanbasak90-cyber/KREDZ) |
+| **Odoo Adamas Hackathon Project** | Enterprise workflow automation module for Odoo x Adamas University Hackathon 2026. | `JavaScript` `Python` `Odoo` `Hackathon` | [GitHub](https://github.com/arpanbasak90-cyber/odoo-adamas-hackathon-2026-) • [Live Demo](https://odoo-adamas-hackathon-2026.vercel.app/) |
+| **KREDZ Protocol** | On-chain credit scoring and verifiable credential verification protocol. | `Web3` `Smart Contracts` `JavaScript` | [GitHub](https://github.com/arpanbasak90-cyber/KREDZ) • [Live Demo](https://kredz-2nzq.vercel.app) |
 
 ---
 

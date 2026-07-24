@@ -110,7 +110,7 @@ const PORTFOLIO_DATA = {
       description: "Decentralized NFT minting infrastructure leveraging Soroban smart contracts on the Stellar network for low-friction digital asset tokenization.",
       technologies: ["JavaScript", "Stellar", "Soroban", "Smart Contracts"],
       githubUrl: "https://github.com/arpanbasak90-cyber/NFT-Minting-Platform",
-      liveUrl: "https://github.com/arpanbasak90-cyber/NFT-Minting-Platform",
+      liveUrl: "https://nft-minting-platform-2.vercel.app",
       featured: true
     },
     {
@@ -137,7 +137,7 @@ const PORTFOLIO_DATA = {
       description: "Custom enterprise management solution created for the Odoo x Adamas University Hackathon 2026.",
       technologies: ["JavaScript", "Python", "Odoo", "Hackathon"],
       githubUrl: "https://github.com/arpanbasak90-cyber/odoo-adamas-hackathon-2026-",
-      liveUrl: "https://github.com/arpanbasak90-cyber/odoo-adamas-hackathon-2026-",
+      liveUrl: "https://odoo-adamas-hackathon-2026.vercel.app/",
       featured: false
     },
     {
@@ -146,7 +146,7 @@ const PORTFOLIO_DATA = {
       description: "Decentralized credit scoring and verifiable credential verification protocol for Web3 identity systems.",
       technologies: ["Web3", "Smart Contracts", "JavaScript"],
       githubUrl: "https://github.com/arpanbasak90-cyber/KREDZ",
-      liveUrl: "https://github.com/arpanbasak90-cyber/KREDZ",
+      liveUrl: "https://kredz-2nzq.vercel.app",
       featured: false
     }
   ],
