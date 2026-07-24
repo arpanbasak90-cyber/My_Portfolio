@@ -1,37 +1,107 @@
 /**
  * ====================================================================
- * PORTFOLIO MAIN DYNAMIC RENDERER & INTERACTIVE EDIT CMS
- * Reads/saves content dynamically and provides on-page Edit Mode
+ * PORTFOLIO MAIN DYNAMIC RENDERER & INTERACTIVE CMS ENGINE
+ * Features:
+ * - Dedicated Tab Page Switching (Home/Bio, Skills, Projects, Achievements, Education, Contact)
+ * - Multi-Theme Switcher (Champagne Gold, Minimal White, Obsidian Black)
+ * - Live On-Page Edit Mode (Add/Edit/Delete items & export updated data.js)
  * ====================================================================
  */
 
 // Global State
 let currentData = null;
 let isEditMode = false;
+let currentTheme = 'gold';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Load data from localStorage if edited; otherwise load default PORTFOLIO_DATA
+  // 1. Load User Data
   const savedData = localStorage.getItem('PORTFOLIO_USER_DATA');
   if (savedData) {
     try {
       currentData = JSON.parse(savedData);
     } catch (e) {
-      console.error('Failed to parse saved portfolio data, falling back to default', e);
+      console.error('Failed to parse saved data', e);
       currentData = JSON.parse(JSON.stringify(PORTFOLIO_DATA));
     }
   } else {
     currentData = JSON.parse(JSON.stringify(PORTFOLIO_DATA));
   }
 
-  // Initial render
+  // 2. Load Theme Preference
+  const savedTheme = localStorage.getItem('PORTFOLIO_THEME');
+  if (savedTheme) {
+    setTheme(savedTheme);
+  } else {
+    setTheme('gold');
+  }
+
+  // 3. Render All Content
   renderAll();
 
-  // Setup event listeners
+  // 4. Setup Initial Tab View (Check URL hash or default to 'about')
+  const initialHash = window.location.hash.replace('#', '');
+  if (initialHash && ['about', 'skills', 'projects', 'achievements', 'education', 'contact'].includes(initialHash)) {
+    switchTab(initialHash);
+  } else {
+    switchTab('about');
+  }
+
+  // Setup Event Listeners
   setupEditMode();
   setupModalEvents();
   setupMobileNav();
-  setupSmoothScroll();
 });
+
+/* --------------------------------------------------------------------
+   SECTION TAB SWITCHING ENGINE
+   -------------------------------------------------------------------- */
+function switchTab(tabId) {
+  // Hide all tabs
+  document.querySelectorAll('.tab-content').forEach(tab => {
+    tab.classList.remove('active');
+  });
+
+  // Remove active state from nav buttons
+  document.querySelectorAll('.nav-tab-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+
+  // Activate target tab
+  const targetTab = document.getElementById(`tab-${tabId}`);
+  if (targetTab) {
+    targetTab.classList.add('active');
+  }
+
+  // Activate target nav button
+  const targetBtn = document.querySelector(`.nav-tab-btn[data-tab="${tabId}"]`);
+  if (targetBtn) {
+    targetBtn.classList.add('active');
+  }
+
+  // Update hash
+  history.replaceState(null, null, `#${tabId}`);
+
+  // Scroll to top of tab view
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* --------------------------------------------------------------------
+   MULTI-THEME ENGINE
+   -------------------------------------------------------------------- */
+function setTheme(themeName) {
+  currentTheme = themeName;
+  document.documentElement.setAttribute('data-theme', themeName);
+  localStorage.setItem('PORTFOLIO_THEME', themeName);
+
+  // Update active state on theme pills
+  document.querySelectorAll('.theme-opt').forEach(opt => {
+    opt.classList.remove('active');
+  });
+  const activeOpt = document.querySelector(`.theme-opt-${themeName}`);
+  if (activeOpt) {
+    activeOpt.classList.add('active');
+  }
+}
 
 /* --------------------------------------------------------------------
    RENDER ALL SECTIONS
@@ -68,7 +138,7 @@ function exportDataJS() {
  * ====================================================================
  * PORTFOLIO DATA CONFIGURATION FILE
  * ====================================================================
- * Generated via Portfolio Interactive Edit Mode
+ * Generated via Portfolio Interactive CMS
  */
 
 const PORTFOLIO_DATA = ${JSON.stringify(currentData, null, 2)};
@@ -139,7 +209,7 @@ function renderSkills(skills) {
         ${categoryObj.items.map((item, itemIdx) => `
           <div class="skill-item">
             <div style="display:flex; align-items:center; gap:0.5rem;">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1B4332" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
               <span>${escapeHtml(item.name)}</span>
             </div>
             <button class="admin-only btn-card-delete" style="padding:0.1rem 0.4rem; font-size:0.7rem;" onclick="deleteSkillItem(${catIdx}, ${itemIdx})">&times;</button>
@@ -672,33 +742,12 @@ function setupMobileNav() {
       navLinks.classList.toggle('active');
     });
 
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
+    navLinks.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
         navLinks.classList.remove('active');
       });
     });
   }
-}
-
-function setupSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
-      const targetEl = document.querySelector(targetId);
-      if (targetEl) {
-        e.preventDefault();
-        const headerOffset = 80;
-        const elementPosition = targetEl.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
 }
 
 function escapeHtml(str) {

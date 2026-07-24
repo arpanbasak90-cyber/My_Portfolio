@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="gold">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
   <meta name="keywords" content="Arpan Basak, Portfolio, Web3 Developer, Stellar, Soroban, React, Next.js, AI Developer, Kolkata Developer">
   <meta name="author" content="Arpan Basak">
 
-  <!-- Favicon placeholder -->
+  <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 
   <!-- CSS -->
@@ -21,10 +21,10 @@
     <div class="container admin-bar-content">
       <div class="admin-status">
         <span class="admin-indicator"></span>
-        <strong>Edit Mode Active</strong> — Click "Edit" or "Delete" on any section below to modify your portfolio live!
+        <strong>Edit Mode Active</strong> — Add, edit, or delete items below!
       </div>
       <div class="admin-actions">
-        <button id="btn-export-data" class="btn-admin btn-admin-save">💾 Save & Download Updated data.js</button>
+        <button id="btn-export-data" class="btn-admin btn-admin-save">💾 Save & Download data.js</button>
         <button id="btn-reset-data" class="btn-admin btn-admin-reset">🔄 Reset Defaults</button>
       </div>
     </div>
@@ -33,7 +33,7 @@
   <!-- NAVIGATION BAR -->
   <nav class="navbar" id="navbar">
     <div class="container">
-      <a href="#hero" class="nav-brand">
+      <a onclick="switchTab('about')" class="nav-brand">
         ARPAN<span>.</span>
       </a>
 
@@ -42,12 +42,22 @@
       </button>
 
       <ul class="nav-links" id="nav-links">
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#achievements" class="nav-link">Achievements</a></li>
-        <li><a href="#education" class="nav-link">Education</a></li>
-        <li><a href="#contact" class="btn btn-primary" style="padding: 0.5rem 1.1rem;">Contact</a></li>
+        <li><button onclick="switchTab('about')" class="nav-tab-btn active" data-tab="about">Home / Bio</button></li>
+        <li><button onclick="switchTab('skills')" class="nav-tab-btn" data-tab="skills">Skills</button></li>
+        <li><button onclick="switchTab('projects')" class="nav-tab-btn" data-tab="projects">Projects</button></li>
+        <li><button onclick="switchTab('achievements')" class="nav-tab-btn" data-tab="achievements">Achievements</button></li>
+        <li><button onclick="switchTab('education')" class="nav-tab-btn" data-tab="education">Education</button></li>
+        <li><button onclick="switchTab('contact')" class="nav-tab-btn" data-tab="contact">Contact</button></li>
+        
+        <!-- Theme Switcher Pills -->
+        <li>
+          <div class="theme-picker" title="Change Theme Background Color">
+            <button class="theme-opt theme-opt-gold active" onclick="setTheme('gold')" title="Champagne Gold Theme"></button>
+            <button class="theme-opt theme-opt-white" onclick="setTheme('white')" title="Minimal White Theme"></button>
+            <button class="theme-opt theme-opt-black" onclick="setTheme('black')" title="Obsidian Black Theme"></button>
+          </div>
+        </li>
+
         <li>
           <button id="btn-toggle-edit" class="btn-edit-mode">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
@@ -58,48 +68,48 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
-  <section class="hero" id="hero">
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <div class="hero-header-row">
-          <div class="hero-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            Available for Opportunities
+  <main style="padding-top: var(--header-height);">
+
+    <!-- TAB 1: HOME & BIO (DEFAULT LANDING VIEW) -->
+    <div id="tab-about" class="tab-content active container">
+      <!-- HERO PART -->
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-header-row">
+            <div class="hero-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              Available for Opportunities
+            </div>
+            <button class="btn-edit-item admin-only" onclick="openPersonalEditModal()">✏️ Edit Hero Info</button>
           </div>
-          <button class="btn-edit-item admin-only" onclick="openPersonalEditModal()">✏️ Edit Hero Info</button>
+
+          <h1 class="hero-title" id="hero-name">Arpan Basak</h1>
+          <p class="hero-subtitle" id="hero-headline">SHIP FAST, BREAK LIMITS</p>
+
+          <div class="hero-highlights" id="hero-highlights">
+            <!-- Dynamic highlights -->
+          </div>
+
+          <div class="hero-actions">
+            <button onclick="switchTab('projects')" class="btn btn-primary">
+              View Projects
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+            <button onclick="switchTab('contact')" class="btn btn-secondary">Get In Touch</button>
+          </div>
         </div>
 
-        <h1 class="hero-title" id="hero-name">Arpan Basak</h1>
-        <p class="hero-subtitle" id="hero-headline">SHIP FAST, BREAK LIMITS</p>
-
-        <div class="hero-highlights" id="hero-highlights">
-          <!-- Dynamic highlights from data.js -->
-        </div>
-
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">
-            View Projects
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </a>
-          <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        <div class="hero-image-wrapper">
+          <div class="hero-image-card">
+            <img id="hero-img" src="assets/profile.jpg" alt="Arpan Basak" class="hero-image">
+          </div>
         </div>
       </div>
 
-      <div class="hero-image-wrapper">
-        <div class="hero-image-card">
-          <img id="hero-img" src="assets/profile.jpg" alt="Arpan Basak" class="hero-image">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT SECTION -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="section-header flex-between">
+      <!-- ABOUT BIO PART -->
+      <div class="section-header flex-between" style="margin-top: 2rem;">
         <div>
-          <span class="section-tag">01. Overview</span>
+          <span class="section-tag">01. Bio & Overview</span>
           <h2 class="section-title">About Me</h2>
         </div>
         <button class="btn-add-item admin-only" onclick="openAboutEditModal()">✏️ Edit Bio</button>
@@ -107,15 +117,13 @@
 
       <div class="about-card">
         <div class="about-paragraphs" id="about-bio">
-          <!-- Dynamic bio paragraphs from data.js -->
+          <!-- Dynamic bio paragraphs -->
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- SKILLS SECTION -->
-  <section class="section" id="skills">
-    <div class="container">
+    <!-- TAB 2: SKILLS SECTION -->
+    <div id="tab-skills" class="tab-content container">
       <div class="section-header flex-between">
         <div>
           <span class="section-tag">02. Stack</span>
@@ -125,14 +133,12 @@
       </div>
 
       <div class="skills-grid" id="skills-container">
-        <!-- Dynamic skills cards from data.js -->
+        <!-- Dynamic skills cards -->
       </div>
     </div>
-  </section>
 
-  <!-- PROJECTS SECTION -->
-  <section class="section" id="projects">
-    <div class="container">
+    <!-- TAB 3: PROJECTS SECTION -->
+    <div id="tab-projects" class="tab-content container">
       <div class="section-header flex-between">
         <div>
           <span class="section-tag">03. Portfolio</span>
@@ -142,31 +148,27 @@
       </div>
 
       <div class="projects-grid" id="projects-container">
-        <!-- Dynamic projects cards from data.js -->
+        <!-- Dynamic projects cards -->
       </div>
     </div>
-  </section>
 
-  <!-- ACHIEVEMENTS SECTION -->
-  <section class="section" id="achievements">
-    <div class="container">
+    <!-- TAB 4: ACHIEVEMENTS SECTION -->
+    <div id="tab-achievements" class="tab-content container">
       <div class="section-header flex-between">
         <div>
           <span class="section-tag">04. Recognition</span>
           <h2 class="section-title">Certificates & Achievements</h2>
         </div>
-        <button class="btn-add-item admin-only" onclick="openAddAchievementModal()">➕ Add New Certificate / Achievement</button>
+        <button class="btn-add-item admin-only" onclick="openAddAchievementModal()">➕ Add Certificate / Achievement</button>
       </div>
 
       <div class="achievements-showcase" id="achievements-container">
-        <!-- Dynamic horizontal showcase cards from data.js -->
+        <!-- Dynamic achievement showcase -->
       </div>
     </div>
-  </section>
 
-  <!-- EDUCATION SECTION -->
-  <section class="section" id="education">
-    <div class="container">
+    <!-- TAB 5: EDUCATION SECTION -->
+    <div id="tab-education" class="tab-content container">
       <div class="section-header flex-between">
         <div>
           <span class="section-tag">05. Background</span>
@@ -176,33 +178,32 @@
       </div>
 
       <div id="education-container">
-        <!-- Dynamic education card from data.js -->
+        <!-- Dynamic education cards -->
       </div>
     </div>
-  </section>
 
-  <!-- CONTACT & SOCIAL SECTION -->
-  <section class="section" id="contact" style="border-bottom: none;">
-    <div class="container">
+    <!-- TAB 6: CONTACT SECTION -->
+    <div id="tab-contact" class="tab-content container">
       <div class="contact-card">
         <div class="admin-only" style="margin-bottom: 1rem;">
-          <button class="btn-add-item" onclick="openContactEditModal()">✏️ Edit Contact & Social Links</button>
+          <button class="btn-add-item" onclick="openContactEditModal()">✏️ Edit Contact Info</button>
         </div>
         <h2 class="contact-title">Let's Connect & Build</h2>
         <p class="contact-subtitle">I'm always open to discussing Web3 projects, hackathon collaborations, full-stack development, or Generative AI ideas.</p>
 
         <div class="social-links" id="social-links">
-          <!-- Dynamic social links from data.js -->
+          <!-- Dynamic social links -->
         </div>
 
         <div>
           <a href="mailto:arpanbasak901@gmail.com" id="contact-email-link" class="btn btn-primary">
-            <!-- Dynamic email link from data.js -->
+            <!-- Dynamic email link -->
           </a>
         </div>
       </div>
     </div>
-  </section>
+
+  </main>
 
   <!-- FOOTER -->
   <footer>
@@ -219,7 +220,7 @@
         <button id="modal-close" class="modal-close-btn">&times;</button>
       </div>
       <div id="modal-body" class="modal-body">
-        <!-- Dynamic Form Fields Inserted Here -->
+        <!-- Dynamic Form Fields -->
       </div>
       <div class="modal-footer">
         <button id="modal-cancel-btn" class="btn btn-secondary">Cancel</button>
