@@ -16,6 +16,20 @@
 </head>
 <body>
 
+  <!-- ADMIN EDIT MODE TOP BAR -->
+  <div id="admin-bar" class="admin-bar hidden">
+    <div class="container admin-bar-content">
+      <div class="admin-status">
+        <span class="admin-indicator"></span>
+        <strong>Edit Mode Active</strong> — Click "Edit" or "Delete" on any section below to modify your portfolio live!
+      </div>
+      <div class="admin-actions">
+        <button id="btn-export-data" class="btn-admin btn-admin-save">💾 Save & Download Updated data.js</button>
+        <button id="btn-reset-data" class="btn-admin btn-admin-reset">🔄 Reset Defaults</button>
+      </div>
+    </div>
+  </div>
+
   <!-- NAVIGATION BAR -->
   <nav class="navbar" id="navbar">
     <div class="container">
@@ -34,6 +48,12 @@
         <li><a href="#achievements" class="nav-link">Achievements</a></li>
         <li><a href="#education" class="nav-link">Education</a></li>
         <li><a href="#contact" class="btn btn-primary" style="padding: 0.5rem 1.1rem;">Contact</a></li>
+        <li>
+          <button id="btn-toggle-edit" class="btn-edit-mode">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+            <span id="edit-mode-label">Edit Mode</span>
+          </button>
+        </li>
       </ul>
     </div>
   </nav>
@@ -42,9 +62,12 @@
   <section class="hero" id="hero">
     <div class="container hero-grid">
       <div class="hero-content">
-        <div class="hero-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-          Available for Opportunities
+        <div class="hero-header-row">
+          <div class="hero-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            Available for Opportunities
+          </div>
+          <button class="btn-edit-item admin-only" onclick="openPersonalEditModal()">✏️ Edit Hero Info</button>
         </div>
 
         <h1 class="hero-title" id="hero-name">Arpan Basak</h1>
@@ -74,9 +97,12 @@
   <!-- ABOUT SECTION -->
   <section class="section" id="about">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">01. Overview</span>
-        <h2 class="section-title">About Me</h2>
+      <div class="section-header flex-between">
+        <div>
+          <span class="section-tag">01. Overview</span>
+          <h2 class="section-title">About Me</h2>
+        </div>
+        <button class="btn-add-item admin-only" onclick="openAboutEditModal()">✏️ Edit Bio</button>
       </div>
 
       <div class="about-card">
@@ -90,9 +116,12 @@
   <!-- SKILLS SECTION -->
   <section class="section" id="skills">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">02. Stack</span>
-        <h2 class="section-title">Skills & Technologies</h2>
+      <div class="section-header flex-between">
+        <div>
+          <span class="section-tag">02. Stack</span>
+          <h2 class="section-title">Skills & Technologies</h2>
+        </div>
+        <button class="btn-add-item admin-only" onclick="openAddSkillCategoryModal()">➕ Add Skill Category</button>
       </div>
 
       <div class="skills-grid" id="skills-container">
@@ -104,9 +133,12 @@
   <!-- PROJECTS SECTION -->
   <section class="section" id="projects">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">03. Portfolio</span>
-        <h2 class="section-title">Featured Projects</h2>
+      <div class="section-header flex-between">
+        <div>
+          <span class="section-tag">03. Portfolio</span>
+          <h2 class="section-title">Featured Projects</h2>
+        </div>
+        <button class="btn-add-item admin-only" onclick="openAddProjectModal()">➕ Add New Project</button>
       </div>
 
       <div class="projects-grid" id="projects-container">
@@ -115,12 +147,15 @@
     </div>
   </section>
 
-  <!-- ACHIEVEMENTS & CERTIFICATES SECTION -->
+  <!-- ACHIEVEMENTS SECTION -->
   <section class="section" id="achievements">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">04. Recognition</span>
-        <h2 class="section-title">Certificates & Achievements</h2>
+      <div class="section-header flex-between">
+        <div>
+          <span class="section-tag">04. Recognition</span>
+          <h2 class="section-title">Certificates & Achievements</h2>
+        </div>
+        <button class="btn-add-item admin-only" onclick="openAddAchievementModal()">➕ Add New Certificate / Achievement</button>
       </div>
 
       <div class="achievements-showcase" id="achievements-container">
@@ -132,9 +167,12 @@
   <!-- EDUCATION SECTION -->
   <section class="section" id="education">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">05. Background</span>
-        <h2 class="section-title">Education</h2>
+      <div class="section-header flex-between">
+        <div>
+          <span class="section-tag">05. Background</span>
+          <h2 class="section-title">Education</h2>
+        </div>
+        <button class="btn-add-item admin-only" onclick="openAddEducationModal()">➕ Add Education</button>
       </div>
 
       <div id="education-container">
@@ -147,6 +185,9 @@
   <section class="section" id="contact" style="border-bottom: none;">
     <div class="container">
       <div class="contact-card">
+        <div class="admin-only" style="margin-bottom: 1rem;">
+          <button class="btn-add-item" onclick="openContactEditModal()">✏️ Edit Contact & Social Links</button>
+        </div>
         <h2 class="contact-title">Let's Connect & Build</h2>
         <p class="contact-subtitle">I'm always open to discussing Web3 projects, hackathon collaborations, full-stack development, or Generative AI ideas.</p>
 
@@ -169,6 +210,23 @@
       <p id="footer-text"></p>
     </div>
   </footer>
+
+  <!-- EDIT / ADD MODAL DIALOG CONTAINER -->
+  <div id="admin-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modal-title">Edit Item</h3>
+        <button id="modal-close" class="modal-close-btn">&times;</button>
+      </div>
+      <div id="modal-body" class="modal-body">
+        <!-- Dynamic Form Fields Inserted Here -->
+      </div>
+      <div class="modal-footer">
+        <button id="modal-cancel-btn" class="btn btn-secondary">Cancel</button>
+        <button id="modal-save-btn" class="btn btn-primary">Save Changes</button>
+      </div>
+    </div>
+  </div>
 
   <!-- JAVASCRIPT DATA & RENDERER -->
   <script src="js/data.js"></script>
